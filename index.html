@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo__box">
+          <img src="images/logo.svg" alt="logo image" class="logo" />
+        </div>
+        <nav class="main__nav">
+          <ul class="nav__links">
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Resources</a></li>
+          </ul>
+          <div class="cta__box">
+            <a href="#" class="cta__login">Login</a>
+            <a href="#" class="cta__signup signup">Sign Up</a>
+          </div>
+        </nav>
+      </header>
+      <main class="main">
+        <section class="hero__section">
+          <div class="hero__text-box">
+            <h1 class="primary__heading">More than just shorter links</h1>
+            <p class="hero__heading-text">
+              Build your brand’s recognition and get detailed insights on how
+              your links are performing.
+            </p>
+            <a href="#" class="hero__cta">Get Started</a>
+          </div>
+          <div class="hero__img-box">
+            <img
+              src="images/illustration-working.svg"
+              alt="hero image"
+              class="hero__img"
+            />
+          </div>
+        </section>
+        <section class="shorten__section">
+          <div class="shorten__container">
+            <input
+              type="text"
+              class="input__text"
+              placeholder="Shorten a link here..."
+            />
+            <button type="submit" class="shorten">Shorten It!</button>
+          </div>
+          <div class="shorten__boxes">
+            <div class="shorten__box">
+              <p class="main__link">https://www.frontendmentor.io</p>
+              <div class="shortened__info">
+                <p class="shortened__link">https://rel.ink/k4lkyj</p>
+                <button class="copy">Copy</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="statistics__section">
+          <h2 class="secondary__heading">Advanced Statistics</h2>
+          <p class="heading__text">
+            Track how your links are performing across the web with our advanced
+            statistics dashboard.
+          </p>
+          <div class="statistics__boxes">
+            <div class="statistics__box">
+              <img
+                src="images/icon-brand-recognition.svg"
+                alt="brand recognition"
+                class="statistics__img"
+              />
+              <h3 class="statictics__heading">Brand Recognition</h3>
+              <p class="statistics__text">
+                Boost your brand recognition with each click. Generic links
+                don’t mean a thing. Branded links help instil confidence in your
+                content.
+              </p>
+            </div>
+            <div class="statistics__box">
+              <img
+                src="images/icon-detailed-records.svg"
+                alt="detailed Records"
+                class="statistics__img"
+              />
+              <h3 class="statictics__heading">Detailed Records</h3>
+              <p class="statistics__text">
+                Gain insights into who is clicking your links. Knowing when and
+                where people engage with your content helps inform better
+                decisions.
+              </p>
+            </div>
+            <div class="statistics__box">
+              <img
+                src="images/icon-fully-customizable.svg"
+                alt="Fully Customizable"
+                class="statistics__img"
+              />
+              <h3 class="statictics__heading">Fully Customizable</h3>
+              <p class="statistics__text">
+                Improve brand awareness and content discoverability through
+                customizable links, supercharging audience engagement.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="boost__section">
+          <h2 class="boost__heading">Boost your links today</h2>
+          <a href="#" class="boost__cta">Get Started</a>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="footer__logo-box">
+          <img
+            src="images/footer-logo.svg"
+            alt="footer logo"
+            class="footer__img"
+          />
+        </div>
+      </footer>
+    </div>
+    Features Link Shortening Branded Links Analytics Resources Blog Developers
+    Support Company About Our Team Careers Contact
+  </body>
+</html>
+
+<!-- https://api.shrtco.de/v2/shorten?url=google.com -->
