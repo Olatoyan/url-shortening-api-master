@@ -1,10 +1,21 @@
 "use strict";
-
+const body = document.querySelector("body");
+const header = document.querySelector(".header");
+const btnNav = document.querySelector(".mobile-btn-nav");
 const inputText = document.querySelector(".input__text");
 const shorten = document.querySelector(".shorten");
 const clear = document.querySelector(".clear");
 const errorMsg = document.querySelector(".error");
 const shortenBoxes = document.querySelector(".shorten__boxes");
+
+btnNav.addEventListener("click", function (e) {
+  e.stopPropagation();
+  header.classList.toggle("nav-open");
+});
+
+window.addEventListener("click", function () {
+  header.classList.remove("nav-open");
+});
 
 let boxes = [];
 const renderLink = function (data) {
@@ -20,23 +31,15 @@ const renderLink = function (data) {
   `;
 
   shortenBoxes.insertAdjacentHTML("beforeend", html);
-
-  const copyButton = document.querySelector(".copy");
-  const shortenedLink = document.querySelector(".shortened__link");
-  console.log(shortenedLink);
-  console.log(copyButton);
   let lastCopiedButton = null;
-  shortenBoxes.addEventListener("click", function (e) {
+  const copyText = function (e) {
     e.preventDefault();
     if (e.target.classList.contains("copy")) {
       const short = e.target
         .closest(".shortened__info")
         .querySelector(".shortened__link").textContent;
-      console.log(short);
       navigator.clipboard.writeText(short);
 
-      // e.target.style.backgroundColor = "#232127";
-      // e.target.textContent = "Copied!";
       if (lastCopiedButton) {
         lastCopiedButton.style.backgroundColor = "";
         lastCopiedButton.textContent = "Copy";
@@ -45,19 +48,13 @@ const renderLink = function (data) {
       e.target.textContent = "Copied!";
       lastCopiedButton = e.target;
     }
+  };
 
-    // if (e.target.classList.contains("clear")) {
-    //   localStorage.clear();
-    //   shortenBoxes.textContent = "";
-    // }
-  });
+  shortenBoxes.addEventListener("click", copyText);
   boxes.push(data);
-  console.log(data);
-  console.log(boxes);
   localStorage.setItem("links", JSON.stringify(boxes));
 };
 const returnedData = JSON.parse(localStorage.getItem("links"));
-console.log(returnedData);
 
 if (!returnedData) {
   shortenBoxes.textContent = "";
@@ -74,50 +71,12 @@ clear.addEventListener("click", function () {
 const getLink = async function (link) {
   const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${link}`);
   const data = await res.json();
-  console.log(data);
   renderLink(data.result);
 };
-
-inputText.addEventListener("input", function () {
-  // if (!inputText.value) {
-  //   inputText.style.border = "3px solid #f46262";
-  //   errorMsg.style.display = "block";
-  // } else {
-  //   inputText.style.border = "0";
-  //   errorMsg.style.display = "none";
-  // }
-});
-
-// shorten.addEventListener("click", function (e) {
-//   e.preventDefault();
-//   if (!inputText.value) {
-//     inputText.style.border = "3px solid #f46262";
-//     errorMsg.style.display = "block";
-//   } else {
-//     let url = inputText.value.trim();
-//     if (!url.startsWith("http://") && !url.startsWith("https://")) {
-//       url = "https://" + url;
-//     }
-//     try {
-//       new URL(url);
-//       inputText.style.border = "0";
-//       errorMsg.style.display = "none";
-//       getLink(url);
-//     } catch (error) {
-//       inputText.style.border = "3px solid #f46262";
-//       errorMsg.textContent = error;
-//       console.log(error);
-//     }
-//   }
-// });
 
 const getURL = function (e) {
   e.preventDefault();
   let url = inputText.value.trim();
-  // const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
-  const urlRegex = new RegExp(
-    "(?:https?)://(w+:?w*)?(S+)(:d+)?(/|/([w#!:.?+=&%!-/]))?"
-  );
   const isValidUrl = (urlString) => {
     const urlPattern = new RegExp(
       "^(https?:\\/\\/)?" +
@@ -135,21 +94,16 @@ const getURL = function (e) {
     if (!isValidUrl(url)) {
       inputText.style.border = "3px solid #f46262";
       errorMsg.style.display = "block";
-      // throw new Error("Invalid URL");
     } else {
       inputText.style.border = "0";
       errorMsg.style.display = "none";
       getLink(url);
       inputText.value = "";
-      // renderLink(data);
     }
-    // console.log(urlRegex.test(url));
-    console.log(isValidUrl(url));
   } catch (error) {
     inputText.style.border = "3px solid #f46262";
     errorMsg.style.display = "block";
     console.log(error);
-    // console.log(data.error);
   }
 };
 
@@ -159,5 +113,3 @@ document.addEventListener("keypress", function (e) {
     getURL(e);
   }
 });
-
-// getLink();

@@ -20,6 +20,7 @@
     <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/queries.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -39,6 +40,18 @@
             <a href="#" class="cta cta__signup signup">Sign Up</a>
           </div>
         </nav>
+        <div class="mobile-btn-nav">
+          <img
+            src="images/icon-hamburger.svg"
+            alt="open icon"
+            class="open__icon"
+          />
+          <img
+            src="images/icon-close.svg"
+            alt="close icon"
+            class="close__icon"
+          />
+        </div>
       </header>
       <main class="main">
         <section class="hero__section">
@@ -66,8 +79,10 @@
                 class="input__text"
                 placeholder="Shorten a link here..."
               />
-              <button type="submit" class="shorten">Shorten It!</button>
-              <button type="submit" class="clear">Clear All!</button>
+              <div class="btn__box">
+                <button type="submit" class="shorten">Shorten It!</button>
+                <button type="submit" class="clear">Clear All!</button>
+              </div>
             </div>
             <p class="error">Please add a link</p>
           </div>
