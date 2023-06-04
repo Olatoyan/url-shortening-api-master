@@ -18,22 +18,25 @@
     />
 
     <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
-      <header class="header">
+      <header class="header padding-sm">
         <div class="logo__box">
           <img src="images/logo.svg" alt="logo image" class="logo" />
         </div>
         <nav class="main__nav">
           <ul class="nav__links">
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Resources</a></li>
+            <li><a class="nav__link" href="#">Features</a></li>
+            <li><a class="nav__link" href="#">Pricing</a></li>
+            <li><a class="nav__link" href="#">Resources</a></li>
           </ul>
           <div class="cta__box">
-            <a href="#" class="cta__login">Login</a>
-            <a href="#" class="cta__signup signup">Sign Up</a>
+            <a href="#" class="cta cta__login">Login</a>
+            <a href="#" class="cta cta__signup signup">Sign Up</a>
           </div>
         </nav>
       </header>
@@ -45,7 +48,7 @@
               Build your brand’s recognition and get detailed insights on how
               your links are performing.
             </p>
-            <a href="#" class="hero__cta">Get Started</a>
+            <a href="#" class="cta hero__cta">Get Started</a>
           </div>
           <div class="hero__img-box">
             <img
@@ -55,33 +58,39 @@
             />
           </div>
         </section>
-        <section class="shorten__section">
+        <section class="shorten__section padding-sm">
           <div class="shorten__container">
-            <input
-              type="text"
-              class="input__text"
-              placeholder="Shorten a link here..."
-            />
-            <button type="submit" class="shorten">Shorten It!</button>
+            <div class="input__box">
+              <input
+                type="text"
+                class="input__text"
+                placeholder="Shorten a link here..."
+              />
+              <button type="submit" class="shorten">Shorten It!</button>
+              <button type="submit" class="clear">Clear All!</button>
+            </div>
+            <p class="error">Please add a link</p>
           </div>
           <div class="shorten__boxes">
-            <div class="shorten__box">
+            <!-- <div class="shorten__box">
               <p class="main__link">https://www.frontendmentor.io</p>
               <div class="shortened__info">
                 <p class="shortened__link">https://rel.ink/k4lkyj</p>
                 <button class="copy">Copy</button>
               </div>
-            </div>
+            </div> -->
           </div>
         </section>
-        <section class="statistics__section">
-          <h2 class="secondary__heading">Advanced Statistics</h2>
-          <p class="heading__text">
-            Track how your links are performing across the web with our advanced
-            statistics dashboard.
-          </p>
+        <section class="statistics__section padding-sm">
+          <div class="statistics__text-box">
+            <h2 class="secondary__heading">Advanced Statistics</h2>
+            <p class="heading__text">
+              Track how your links are performing across the web with our
+              advanced statistics dashboard.
+            </p>
+          </div>
           <div class="statistics__boxes">
-            <div class="statistics__box">
+            <div class="statistics__box statistics__box-1">
               <img
                 src="images/icon-brand-recognition.svg"
                 alt="brand recognition"
@@ -94,7 +103,7 @@
                 content.
               </p>
             </div>
-            <div class="statistics__box">
+            <div class="statistics__box statistics__box-2">
               <img
                 src="images/icon-detailed-records.svg"
                 alt="detailed Records"
@@ -107,7 +116,7 @@
                 decisions.
               </p>
             </div>
-            <div class="statistics__box">
+            <div class="statistics__box statistics__box-3">
               <img
                 src="images/icon-fully-customizable.svg"
                 alt="Fully Customizable"
@@ -123,22 +132,65 @@
         </section>
         <section class="boost__section">
           <h2 class="boost__heading">Boost your links today</h2>
-          <a href="#" class="boost__cta">Get Started</a>
+          <a href="#" class="boost__cta cta">Get Started</a>
         </section>
       </main>
-      <footer class="footer">
-        <div class="footer__logo-box">
+      <footer class="footer padding-sm">
+        <div class="footer__img-box">
           <img
             src="images/footer-logo.svg"
             alt="footer logo"
             class="footer__img"
           />
         </div>
+        <div class="footer__links-box">
+          <p class="footer__heading">Features</p>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Link Shortening</a></li>
+            <li><a href="#" class="footer__link">Branded Links</a></li>
+            <li><a href="#" class="footer__link">Analytics</a></li>
+          </ul>
+        </div>
+        <div class="footer__links-box">
+          <p class="footer__heading">Resources</p>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Blog</a></li>
+            <li><a href="#" class="footer__link">Developers</a></li>
+            <li><a href="#" class="footer__link">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer__links-box">
+          <p class="footer__heading">Company</p>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">About</a></li>
+            <li><a href="#" class="footer__link">Our Team</a></li>
+            <li><a href="#" class="footer__link">Careers</a></li>
+            <li><a href="#" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__logo-box">
+          <img
+            src="images/icon-facebook.svg"
+            alt="facebook logo"
+            class="footer__logo"
+          />
+          <img
+            src="images/icon-twitter.svg"
+            alt="twitter logo"
+            class="footer__logo"
+          />
+          <img
+            src="images/icon-pinterest.svg"
+            alt="pintrest logo"
+            class="footer__logo"
+          />
+          <img
+            src="images/icon-instagram.svg"
+            alt="instagram logo"
+            class="footer__logo"
+          />
+        </div>
       </footer>
     </div>
-    Features Link Shortening Branded Links Analytics Resources Blog Developers
-    Support Company About Our Team Careers Contact
   </body>
 </html>
-
-<!-- https://api.shrtco.de/v2/shorten?url=google.com -->
