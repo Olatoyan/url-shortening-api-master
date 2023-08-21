@@ -95,13 +95,17 @@ const getLink = async function (link) {
 
     if (res.ok) {
       // disallowedLink.textContent = err;
-      disallowedLink.style.display = "none";
+      disallowedLink.style.opacity = "0";
     }
     if (!res.ok) throw "The link you entered is a disallowed link ";
     renderLink(data.result);
   } catch (err) {
     disallowedLink.textContent = err;
-    disallowedLink.style.display = "block";
+    disallowedLink.style.opacity = "1";
+    setTimeout(() => {
+      // disallowedLink.textContent = err;
+      disallowedLink.style.opacity = "0";
+    }, 2000);
   }
 };
 
@@ -124,16 +128,16 @@ const getURL = function (e) {
   try {
     if (!isValidUrl(url)) {
       inputText.style.border = "3px solid #f46262";
-      errorMsg.style.display = "block";
+      errorMsg.style.opacity = "1";
     } else {
       inputText.style.border = "0";
-      errorMsg.style.display = "none";
+      errorMsg.style.opacity = "0";
       getLink(url);
       inputText.value = "";
     }
   } catch (error) {
     inputText.style.border = "3px solid #f46262";
-    errorMsg.style.display = "block";
+    errorMsg.style.opacity = "1";
   }
 };
 
