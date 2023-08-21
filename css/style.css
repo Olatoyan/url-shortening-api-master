@@ -162,13 +162,18 @@ body {
   width: 70%;
 }
 
+.error__box {
+  display: flex;
+  height: 2.8rem;
+}
+
 .error,
 .disallowed__link {
-  /* display: none; */
+  display: none;
   padding-top: 1rem;
   color: #f46262;
   font-size: 1.2rem;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .input__text::placeholder {
