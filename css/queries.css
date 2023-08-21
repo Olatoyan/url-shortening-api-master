@@ -217,7 +217,7 @@
     flex-direction: column;
     width: 100%;
     align-items: stretch;
-    gap: 0;
+    gap: 0.5rem;
   }
 
   .shortened__link {
@@ -251,7 +251,8 @@
     font-size: 3.6rem;
   }
   .shorten,
-  .clear {
+  .clear,
+  .delete {
     padding: 1rem 2rem;
   }
 

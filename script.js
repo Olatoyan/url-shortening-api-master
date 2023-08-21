@@ -6,6 +6,7 @@ const inputText = document.querySelector(".input__text");
 const shorten = document.querySelector(".shorten");
 const clear = document.querySelector(".clear");
 const errorMsg = document.querySelector(".error");
+const disallowedLink = document.querySelector(".disallowed__link");
 const shortenBoxes = document.querySelector(".shorten__boxes");
 
 btnNav.addEventListener("click", function (e) {
@@ -25,11 +26,14 @@ const renderLink = function (data) {
         <div class="shortened__info">
           <p class="shortened__link">${data.short_link}</p>
           <button class="copy">Copy</button>
+          <button class="delete">Delete</button>
         </div>
       </div>
   
   `;
 
+  boxes.push(data);
+  localStorage.setItem("links", JSON.stringify(boxes));
   shortenBoxes.insertAdjacentHTML("beforeend", html);
   let lastCopiedButton = null;
   const copyText = function (e) {
@@ -48,11 +52,27 @@ const renderLink = function (data) {
       e.target.textContent = "Copied!";
       lastCopiedButton = e.target;
     }
+
+    if (e.target.classList.contains("delete")) {
+      const shortenBox = e.target.closest(".shorten__box");
+      const linkElement = shortenBox.querySelector(".shortened__link");
+      const linkOriginal = linkElement.textContent;
+
+      const storedData = JSON.parse(localStorage.getItem("links"));
+
+      const itemIndex = storedData.findIndex(
+        (link) => link.short_link === linkOriginal
+      );
+
+      if (itemIndex !== -1) {
+        storedData.splice(itemIndex, 1);
+        localStorage.setItem("links", JSON.stringify(storedData));
+      }
+      shortenBox.remove();
+    }
   };
 
   shortenBoxes.addEventListener("click", copyText);
-  boxes.push(data);
-  localStorage.setItem("links", JSON.stringify(boxes));
 };
 const returnedData = JSON.parse(localStorage.getItem("links"));
 
@@ -69,9 +89,20 @@ clear.addEventListener("click", function () {
 });
 
 const getLink = async function (link) {
-  const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${link}`);
-  const data = await res.json();
-  renderLink(data.result);
+  try {
+    const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${link}`);
+    const data = await res.json();
+
+    if (res.ok) {
+      // disallowedLink.textContent = err;
+      disallowedLink.style.display = "none";
+    }
+    if (!res.ok) throw "The link you entered is a disallowed link ";
+    renderLink(data.result);
+  } catch (err) {
+    disallowedLink.textContent = err;
+    disallowedLink.style.display = "block";
+  }
 };
 
 const getURL = function (e) {
@@ -103,7 +134,6 @@ const getURL = function (e) {
   } catch (error) {
     inputText.style.border = "3px solid #f46262";
     errorMsg.style.display = "block";
-    console.log(error);
   }
 };
 
